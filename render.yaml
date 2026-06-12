@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: wca
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: WCA_STORAGE_DIR
+        value: /var/data
+      - key: OPENAI_MODEL
+        value: gpt-4o
+    disk:
+      name: wca-data
+      mountPath: /var/data
+      sizeGB: 1
